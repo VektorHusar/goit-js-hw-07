@@ -25,18 +25,14 @@ const images = [
     },
 ];
 
-const galleryContainer = document.querySelector(".gallery");
 
-for (let i = 0; i < images.length; i++) {
-    const listItem = document.createElement("li");
-    const imageElement = document.createElement("img");
-    imageElement.src = images[i].url;
-    imageElement.alt = images[i].alt;
-    imageElement.style.width = "360px";
-    imageElement.style.height = "300px";
-    listItem.appendChild(imageElement);
-    galleryContainer.appendChild(listItem);
-}
+const gallery = images
+    .map(
+        (item) =>
+            `<li><img src="${item.url}"  alt="${item.alt}" style="width: 360px; height: 300px;"/></li>`
+    )
+    .join('');
+
+document.querySelector(".gallery").insertAdjacentHTML('afterbegin', gallery)
 
 
-console.log(galleryContainer);
